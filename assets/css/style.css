@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: "Roboto", sans-serif;
+}
+
+/* Common */
+.content {
+    width: 1170px;
+    max-width: calc(100vw - 48px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Content */
+.header {
+    background: #FFFCF4;
+    padding: 16px 0;
+}
+.profile {
+    background: #FFFCF4;
+    height: 100vh;
+    padding: 40px 0 65px 0;
+}
+
+.profile .info {
+    width: 50%;
+}
+
+.profile .info-stu,
+.profile .social,
+.profile .social .social-list {
+    margin-top: 20px;
+}
+
+.profile .info-stu tr{
+    margin-top: 16px;
+}
+
+.info-stu td {
+    font-size: 1.8rem;
+}
+
+.info-stu td:first-child {
+    padding-right: 30px;
+    font-weight: 600;
+}
+
+.profile .social .social-list {
+    padding-left: 10px;
+    display: flex;
+    gap: 30px;
+}
+
+.profile .social span {
+    font-size: 1.8rem;
+}
+
+.profile .social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.profile .social-link:hover {
+    background-color: #ddd;
+}
+
+.profile .social-link img {
+    width: 50px;
+    height: 50px;
+}
