@@ -1,85 +1,48 @@
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    font-size: 62.5%;
-}
-
 body {
-    font-size: 1.6rem;
-    font-family: "Roboto", sans-serif;
+    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
-/* Common */
-.content {
-    width: 1170px;
-    max-width: calc(100vw - 48px);
-    margin-left: auto;
-    margin-right: auto;
+label {
+    display: block;
+    margin-bottom: 5px;
 }
 
-/* Content */
-.header {
-    background: #FFFCF4;
-    padding: 16px 0;
-}
-.profile {
-    background: #FFFCF4;
-    height: 100vh;
-    padding: 40px 0 65px 0;
+input {
+    margin-bottom: 10px;
 }
 
-.profile .info {
-    width: 50%;
+button {
+    border: 1px solid #22a2d1;
+    background-color: #22a2d1;
+    color: #f2f2f2;
+    padding: 5px 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+button:hover {
+    
 }
 
-.profile .info-stu,
-.profile .social,
-.profile .social .social-list {
+table {
+    width: 100%;
+    border-collapse: collapse;
     margin-top: 20px;
 }
 
-.profile .info-stu tr{
-    margin-top: 16px;
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
 }
 
-.info-stu td {
-    font-size: 1.8rem;
+th {
+    background-color: #f2f2f2;
 }
 
-.info-stu td:first-child {
-    padding-right: 30px;
-    font-weight: 600;
-}
-
-.profile .social .social-list {
-    padding-left: 10px;
-    display: flex;
-    gap: 30px;
-}
-
-.profile .social span {
-    font-size: 1.8rem;
-}
-
-.profile .social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-}
-
-.profile .social-link:hover {
-    background-color: #ddd;
-}
-
-.profile .social-link img {
-    width: 50px;
-    height: 50px;
+#formCapNhat {
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    display: none;
 }
