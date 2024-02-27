@@ -131,8 +131,12 @@ function xacnhandangky(event) {
     event.preventDefault();
     console.log("dang ky khong thanh cong");
   } else {
-    dangky();
+    window.location.href = "index.html";
     return;
   }
 
+}
+
+function loidangky(id, message) {
+  document.getElementById(id).innerHTML = message;
 }
