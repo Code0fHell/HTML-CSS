@@ -45,32 +45,34 @@ const students = [
 ]
 
 
+function saveStudentInfo(link) {
+    // Lấy tất cả các hàng từ bảng
+    var tableRows = document.querySelectorAll('#datatablesSimple tbody tr');
+
+    // Mảng để lưu trữ thông tin sinh viên
+    var studentsData = [];
+
+    tableRows.forEach(function (row) {
+        // Lấy các ô dữ liệu từ mỗi hàng
+        var cells = row.getElementsByTagName('td');
+
+        // Lấy dữ liệu từ từng ô và thêm vào đối tượng sinh viên
+        var student = {
+            ten: cells[0].textContent,
+            msv: cells[1].textContent,
+            kyThi: cells[2].textContent,
+            diem: cells[3].textContent,
+            ngayThi: cells[4].textContent,
+            trangThai: cells[5].textContent
+        };
+
+        // Thêm đối tượng sinh viên vào mảng
+        studentsData.push(student);
+    });
+
+    // Lưu mảng sinh viên vào localStorage
+    localStorage.setItem('studentsData', JSON.stringify(studentsData));
 
 
-// Lấy tất cả các hàng từ tbody
-const rows = document.querySelectorAll('tbody tr');
-
-// Tạo một mảng để lưu trữ dữ liệu
-const data = [];
-
-// Lặp qua mỗi hàng và lưu dữ liệu vào mảng
-rows.forEach(row => {
-    const cells = row.children;
-    const rowData = {
-        'Họ và tên': cells[0].textContent,
-        'Môn thi': cells[1].textContent,
-        'Số lần tham gia': cells[2].textContent,
-        'Tỷ lệ hoàn thành': cells[3].textContent,
-        'Điểm trung bình': cells[4].textContent,
-        'Phân phối điểm số': cells[5].textContent
-    };
-
-    data.push(rowData);
-});
-
-// Lưu mảng dữ liệu vào local storage
-localStorage.setItem('studentData', JSON.stringify(data));
-
-// Đọc dữ liệu từ local storage (ví dụ)
-const storedData = JSON.parse(localStorage.getItem('studentData'));
-console.log(storedData);
+    window.location.href = 'StudentInfo.html';
+}

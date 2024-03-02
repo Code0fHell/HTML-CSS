@@ -103,8 +103,8 @@
                         </div>
                         <div id="studentSearchBar">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
-                                <button class="btn btn-primary" type="button"><svg
+                                <input id="searchInput" class="form-control" type="text" placeholder="Search" aria-label="Search">
+                                <button onclick="searchStudents()" class="btn btn-primary" type="button"><svg
                                         class="svg-inline--fa fa-magnifying-glass" aria-hidden="true" focusable="false"
                                         data-prefix="fas" data-icon="magnifying-glass" role="img"
                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
@@ -113,6 +113,34 @@
                                         </path>
                                     </svg><!-- <i class="fas fa-se  arch"></i> Font Awesome fontawesome.com --></button>
                             </div>
+                        </div>
+
+                    </div>
+
+                    <div class="card mb-4">
+
+                        <div class="card-header">
+                            <i class="fas fa-table me-1"></i>
+                            Danh sách sinh viên
+                        </div>
+
+                        <div class="card-body">
+                            <table id="searchResults" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Họ và tên</th>
+                                        <th scope="col">MSV</th>
+                                        <th scope="col">Kỳ thi</th>
+                                        <th scope="col">Điểm số</th>
+                                        <th scope="col">Ngày thi</th>
+                                        <th scope="col">Trạng thái hoàn thành</th>
+                                        <th scope="col">Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dữ liệu kết quả tìm kiếm sẽ được thêm vào đây -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
 
@@ -138,7 +166,7 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
-    <script src="js/onscripts.js"></script>
+    <script src="./js/studentInfo.js"></script>
 </body>
 
 </html>
