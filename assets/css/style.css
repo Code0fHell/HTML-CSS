@@ -282,3 +282,132 @@ footer a {
 /* Avatar */
 .avatar {
 }
+/* Cấu hình chung */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2 {
+    font-weight: bold;
+}
+
+p {
+    margin: 0 0 10px 0;
+}
+
+/* Thanh tìm kiếm */
+
+#search-bar {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#search-form {
+    display: flex;
+}
+
+#search-form label {
+    margin-right: 10px;
+}
+
+#search-form input {
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+#search-form button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+/* Danh sách kết quả */
+
+#results-container {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+#student-info {
+    margin-bottom: 10px;
+}
+
+#exam-list {
+    margin-bottom: 10px;
+}
+
+#exam-list table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#exam-list th,
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+#exam-details {
+    margin-bottom: 10px;
+}
+
+#exam-details table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#exam-details th,
+td {
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+/* Báo cáo */
+
+#export-bar {
+    margin-top: 10px;
+    text-align: right;
+}
+
+#export-bar a {
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    background-color: #ddd;
+    cursor: pointer;
+}
+
+.header__div {
+    inline-size: 50px;
+}
+
+#result-detail {
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+#print-result {
+    background-color: #0073b7;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+@media print {
+    #result-detail {
+        border: none;
+        padding: 0;
+    }
+
+    #print-result {
+        display: none;
+    }
+}
+
