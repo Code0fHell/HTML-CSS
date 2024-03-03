@@ -1,0 +1,142 @@
+
+h1{
+  margin-left: 300px;
+  margin-bottom: 20px;
+    color: red;
+}
+body {
+
+  min-height: 100vh;
+  font-family: 'Lato', sans-serif;
+}
+.timer-container{
+  margin-left: 350px;
+  display: inline-flex;
+  #timer{
+    margin-left: 10px;
+  }
+  #questions-number{
+    font-size: 15px;
+  }
+  #icon{
+    margin: auto;
+    margin-left: 500px;
+  }
+}
+h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+.container_1{
+  margin: center;
+ justify-content: center;
+ align-items: center;
+ button{
+    padding: 0;
+    margin: auto;
+    height: 37px;
+    font-family: "Nunito", sans-serif;
+    font-size: 12px;
+    line-height: 37px;
+    font-weight: 600;
+    float: left;
+    width: 5%;
+    border-radius: 10px;
+    margin-left: 680px;
+    margin-bottom: 20px;
+ }
+}
+.bulgy-radios {
+  margin: auto;
+  align-items: center;
+  width: 50%;
+  background: #fff;
+  padding: 1rem 100px 1rem 6rem;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  margin-left: 350px;
+  border:3px solid #aaa;
+  label {
+    display: block;
+    position: relative;
+    height: 1em;
+    padding-left: 4rem;
+    margin-bottom: 1.75rem;
+    cursor: pointer;
+    font-size: 15px;
+    user-select: none;
+    color: #555;
+    letter-spacing: 1px;
+    &:hover input:not(:checked) ~ .radio {
+      opacity: 0.8;
+    }
+  }
+  .label {
+    display: flex;
+    align-items: center;
+    padding-right: 3rem;
+    span {
+      line-height: 1em;
+    }
+  }
+  input {
+    position: absolute;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+    left: -2000px;
+
+    &:checked {
+      ~ .radio {
+        background-color: #0ac07d;
+        transition: background .3s;
+        &::after {
+          opacity: 1;
+        }
+      }
+      ~ .label {
+        color: #0bae72;
+        span {
+          animation: bulge .5s forwards;
+        }
+
+        @for $i from 1 to 20 {
+          span:nth-child(#{$i}) { animation-delay: $i * 0.025s; }
+        }
+      }
+    }
+  }
+}
+.radio {
+    position: absolute;
+    top: 0.2rem;
+    left: 40px;
+    height: 0.5rem;
+    width: 0.5rem;
+    background: rgb(201, 222, 214);
+    border-radius: 190%;
+  &::after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    top: .5rem;
+    left: .5rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    background: #fff;
+  }
+}
+@keyframes bulge {
+  50% {
+    transform: rotate(4deg);
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  100% {
+    transform: rotate(0);
+    font-size: 1em;
+    font-weight: bold;
+  }
+}
