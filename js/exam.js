@@ -1,3 +1,9 @@
+// Hàm chuyển hướng sang trang thêm mới kỳ thi
+function addExam() {
+    sessionStorage.clear();
+    window.location.href = "ec-exams.html";
+}
+
 // Kiểm tra xem localStorage có dữ liệu kỳ thi không
 var storedExams = JSON.parse(localStorage.getItem("exams")) || [];
 
@@ -7,7 +13,6 @@ exams = storedExams;
 // Hàm chuyển đổi chuỗi "hh:mm" thành phút
 function convertTimeToMinutes(timeString) {
     var parts = timeString.split(":");
-    console.log(parts);
     var hours = parseInt(parts[0], 10);
     var minutes = parseInt(parts[1], 10);
     return hours * 60 + minutes;
@@ -35,50 +40,84 @@ function displayExamList() {
 
     // Xóa nội dung hiện tại của examList
     examListElement.innerHTML = "";
-
+    var editExamID = sessionStorage.getItem("editExamID");
+    console.log(editExamID);
     // Hiển thị từng kỳ thi trong danh sách
     examsList.forEach(function (exam) {
-        console.log(exam.id);
-        // Tạo phần tử div chứa thông tin kỳ thi
-        var listItem = document.createElement("div");
-        listItem.className = "mb-3";
-        listItem.innerHTML = `
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">${exam.name}</h5>
-                    <p class="card-text">${exam.description}</p>
-                    <p class="card-text">Loại: ${exam.type}</p>
-                    <p class="card-text">Số câu hỏi: ${exam.numQuestions}</p>
-                    ${
-                        exam.type === "Thời gian cụ thể"
-                            ? `<p class="card-text">Thời gian: ${calculateTimeDifference(
-                                  exam.startTime,
-                                  exam.endTime
-                              )}</p>`
-                            : ""
-                    }
-                    <button class="btn btn-primary edit-exam-btn" data-exam-id="${
-                        exam.id
-                    }">Chỉnh sửa</button>
-                    <button class="btn btn-danger delete-exam-btn" data-exam-id="${
-                        exam.id
-                    }">Xóa</button>
+        // Kiểm tra xem kỳ thi có tồn tại trong danh sách không
+        var existingListItem = examListElement.querySelector(`[exam-item-id="${editExamID}"]`);
+        console.log(existingListItem);
+        // Nếu tồn tại, thay thế nội dung của phần tử
+        if (existingListItem) {
+            existingListItem.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${exam.name}</h5>
+                        <p class="card-text">${exam.description}</p>
+                        <p class="card-text">Loại: ${exam.type}</p>
+                        <p class="card-text">Số câu hỏi: ${exam.numQuestions}</p>
+                        ${
+                            exam.type === "Thời gian cụ thể"
+                                ? `<p class="card-text">Thời gian: ${calculateTimeDifference(
+                                      exam.startTime,
+                                      exam.endTime
+                                  )}</p>`
+                                : ""
+                        }
+                        <button class="btn btn-primary edit-exam-btn" data-exam-id="${exam.id}">Chỉnh sửa</button>
+                        <button class="btn btn-danger delete-exam-btn" data-exam-id="${exam.id}">Xóa</button>
+                    </div>
                 </div>
-            </div>
-        `;
-
-         // Thêm event listener cho nút Chỉnh sửa
-         var editButton = listItem.querySelector(".edit-exam-btn");
-         editButton.addEventListener("click", function () {
-             editExam(exam.id);
-         });
- 
-         // Thêm event listener cho nút Xóa
-         var deleteButton = listItem.querySelector(".delete-exam-btn");
-         deleteButton.addEventListener("click", function () {
-             deleteExam(exam.id);
-         });
-        examListElement.appendChild(listItem);
+            `;
+            // Thêm event listener cho nút Chỉnh sửa
+            var editButton = existingListItem.querySelector(".edit-exam-btn");
+            editButton.addEventListener("click", function () {
+                editExam(exam.id);
+            });
+    
+            // Thêm event listener cho nút Xóa
+            var deleteButton = existingListItem.querySelector(".delete-exam-btn");
+            deleteButton.addEventListener("click", function () {
+                deleteExam(exam.id);
+            });
+        } else {
+            // Nếu không tồn tại, tạo phần tử mới
+            var listItem = document.createElement("div");
+            listItem.className = "mb-3";
+            listItem.setAttribute("exam-item-id", exam.id);
+            listItem.innerHTML = `
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">${exam.name}</h5>
+                        <p class="card-text">${exam.description}</p>
+                        <p class="card-text">Loại: ${exam.type}</p>
+                        <p class="card-text">Số câu hỏi: ${exam.numQuestions}</p>
+                        ${
+                            exam.type === "Thời gian cụ thể"
+                                ? `<p class="card-text">Thời gian: ${calculateTimeDifference(
+                                      exam.startTime,
+                                      exam.endTime
+                                  )}</p>`
+                                : ""
+                        }
+                        <button class="btn btn-primary edit-exam-btn" data-exam-id="${exam.id}">Chỉnh sửa</button>
+                        <button class="btn btn-danger delete-exam-btn" data-exam-id="${exam.id}">Xóa</button>
+                    </div>
+                </div>
+            `;
+            // Thêm event listener cho nút Chỉnh sửa
+            var editButton = listItem.querySelector(".edit-exam-btn");
+            editButton.addEventListener("click", function () {
+                editExam(exam.id);
+            });
+    
+            // Thêm event listener cho nút Xóa
+            var deleteButton = listItem.querySelector(".delete-exam-btn");
+            deleteButton.addEventListener("click", function () {
+                deleteExam(exam.id);
+            });
+            examListElement.appendChild(listItem);
+        }
     });
 }
 // Gọi hàm để hiển thị danh sách khi trang được tải
@@ -91,9 +130,9 @@ function deleteExam(examID) {
 
     // Lọc ra kỳ thi cần xóa
     var updatedExams = examsList.filter(function (exam) {
-        return exam.id !== examID;
+        return exam.id != examID;
     });
-
+    console.log(updatedExams);
     // Cập nhật danh sách kỳ thi
     localStorage.setItem("exams", JSON.stringify(updatedExams));
 

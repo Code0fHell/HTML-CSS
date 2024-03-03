@@ -133,6 +133,20 @@ function editStudent(studentID) {
         document.getElementById("addEditStudentModal")
     );
     modal.show();
+    // Lấy modal
+    var addEditStudentModal = document.getElementById("addEditStudentModal");
+
+    // Đặt lắng nghe sự kiện "hidden.bs.modal" để reset giá trị của các input
+    addEditStudentModal.addEventListener("hidden.bs.modal", function () {
+        // Xóa giá trị của các input
+        document.getElementById("studentName").value = "";
+        document.getElementById("studentID").value = "";
+
+        // Hiển thị lại nút "Lưu", ẩn nút "Cập nhật" và "Xóa"
+        document.getElementById("saveBtn").style.display = "block";
+        document.getElementById("updateBtn").style.display = "none";
+        document.getElementById("delBtn").style.display = "none";
+    });
 }
 
 // Hàm cập nhật thông tin sinh viên

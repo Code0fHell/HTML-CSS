@@ -113,14 +113,14 @@ function addQuestion() {
         var answerOption = String.fromCharCode("A".charCodeAt(0) + index);
         if (answerOption === selectedAnswerId) {
             // In đậm câu trả lời đã được check
-            answerContentHTML += `<strong class="data-answer">${answerOption}. ${answerContent}</strong><br>`;
+            answerContentHTML += `<strong class="data-answer correct-answer">${answerOption}. ${answerContent}</strong><br>`;
         } else {
             answerContentHTML += `<span class="data-answer">${answerOption}. ${answerContent}</span><br>`;
         }
     });
     cell1.innerHTML = question;
     cell2.innerHTML = answerContentHTML;
-    cell3.innerHTML = `<button class="btn btn-danger" onclick="deleteQuestion(this)">Xóa</button> <button id="editQuestionBtn" class="btn btn-primary" onclick="editQuestion(this)">Chỉnh sửa</button> `;
+    cell3.innerHTML = ` <button id="editQuestionBtn" class="btn btn-primary" onclick="editQuestion(this)">Chỉnh sửa</button> <button class="btn btn-danger" onclick="deleteQuestion(this)">Xóa</button>`;
 }
 
 // Hàm xóa câu hỏi
@@ -238,7 +238,7 @@ function updateQuestion() {
             var answerOption = String.fromCharCode("A".charCodeAt(0) + index);
             if (answerOption === selectedAnswerId) {
                 // In đậm câu trả lời đã được check
-                answerContentHTML += `<strong class="data-answer">${answerOption}. ${answerContent}</strong><br>`;
+                answerContentHTML += `<strong class="data-answer correct-answer">${answerOption}. ${answerContent}</strong><br>`;
             } else {
                 answerContentHTML += `<span class="data-answer">${answerOption}. ${answerContent}</span><br>`;
             }
@@ -354,7 +354,7 @@ function addDataToTable(dataArray) {
                 );
                 if (index === correctAnswerIndex) {
                     // In đậm và chọn đáp án đúng
-                    answerContentHTML += `<strong class="data-answer">${answerOption}. ${answer}</strong><br>`;
+                    answerContentHTML += `<strong class="data-answer correct-answer">${answerOption}. ${answer}</strong><br>`;
                 } else {
                     answerContentHTML += `<span class="data-answer">${answerOption}. ${answer}</span><br>`;
                 }
@@ -421,7 +421,7 @@ function saveExam() {
             var answerText = answerOptions[j].innerText.split(". ")[1];
             questionData.answers.push({
                 text: answerText,
-                isCorrect: answerOptions[j].classList.contains("data-answer")
+                isCorrect: answerOptions[j].classList.contains("correct-answer")
                     ? true
                     : false,
             });
@@ -446,7 +446,8 @@ function saveExam() {
     // Kiểm tra xem localStorage đã có dữ liệu kỳ thi chưa
     var examsList = JSON.parse(localStorage.getItem("exams")) || [];
     // Gán id cho kỳ thi mới
-    examData.id = examsList.length + 1; // Sử dụng độ dài hiện tại của danh sách + 1 làm id
+    examData.id = examsList.length + 1;
+    console.log(examData.id);
     examsList.push(examData);
 
     // Lưu lại danh sách kỳ thi vào localStorage
@@ -455,7 +456,6 @@ function saveExam() {
     // Chuyển hướng sang trang exam.html
     window.location.href = "exam.html";
 }
-// Gọi hàm để kiểm tra và load thông tin chỉnh sửa khi trang được tải
 loadEditExamInfo();
 
 // Hàm kiểm tra và load thông tin chỉnh sửa
@@ -463,28 +463,71 @@ function loadEditExamInfo() {
     // Lấy id từ sessionStorage
     var editExamId = sessionStorage.getItem("editExamID");
 
-    // Kiểm tra xem có examId để chỉnh sửa không
-    if (editExamId) {
-        // Lấy danh sách kỳ thi từ localStorage
-        var examsList = JSON.parse(localStorage.getItem("exams")) || [];
-
+    // Lấy danh sách kỳ thi từ localStorage
+    var examsList = JSON.parse(localStorage.getItem("exams")) || [];
+    console.log(examsList);
+    var check = false;
+    if(editExamId) {
+        document.getElementById("ec-exams-heading").innerHTML = "Chỉnh sửa kỳ thi";
         // Tìm kỳ thi có id tương ứng
-        var selectedExam = examsList.find(function (exam) {
-            return exam.id === editExamId;
+        examsList.forEach(function (item) {
+            if (item.id == editExamId) {
+                console.log(item.name);
+                // Hiển thị thông tin kỳ thi để chỉnh sửa
+                document.getElementById("examName").value = item.name;
+                document.getElementById("examDescription").value = item.description;
+                if (item.type === "Thời gian cụ thể") {
+                    document.getElementById("specificTimeSettings").style.display =
+                        "block";
+                    document.getElementById("examStartTime").value = item.startTime;
+                    document.getElementById("examEndTime").value = item.endTime;
+                }
+                // Hiển thị loại kỳ thi
+                var examTypeDropdown = document.getElementById("examType");
+                for (var i = 0; i < examTypeDropdown.options.length; i++) {
+                    if (examTypeDropdown.options[i].textContent === item.type) {
+                        examTypeDropdown.selectedIndex = i;
+                        break;
+                    }
+                }
+                // Hiển thị danh sách câu hỏi và câu trả lời
+                displayQuestionsAndAnswers(item.questions);
+            }
         });
-
-        // Kiểm tra xem kỳ thi có tồn tại không
-        if (selectedExam) {
-            // Hiển thị thông tin kỳ thi để chỉnh sửa
-            document.getElementById("examName").value = selectedExam.name;
-            document.getElementById("examDescription").value =
-                selectedExam.description;
-            // Các thông tin khác tương tự...
-
-            // Xóa examId khỏi localStorage sau khi sử dụng
-            sessionStorage.removeItem("editExamId");
-        }
     }
 }
 
+// Hiển thị danh sách câu hỏi và câu trả lời
+function displayQuestionsAndAnswers(questions) {
+    var questionTableBody = document
+        .getElementById("questionTable")
+        .getElementsByTagName("tbody")[0];
+    questionTableBody.innerHTML = ""; // Clear existing table content
 
+    questions.forEach(function (questionData, index) {
+        var row = questionTableBody.insertRow(index);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        cell1.innerText = questionData.question;
+
+        // Tạo HTML cho các câu trả lời
+        var answerOptionsHTML = "";
+        questionData.answers.forEach(function (answer, answerIndex) {
+            var isCorrectClass = answer.isCorrect;
+            console.log(isCorrectClass);
+            if (isCorrectClass == true) {
+                answerOptionsHTML += `<strong class="data-answer correct-answer"> ${String.fromCharCode(
+                    65 + answerIndex
+                )}. ${answer.text} </strong><br>`;
+            } else {
+                answerOptionsHTML += `<span class="data-answer">${String.fromCharCode(
+                    65 + answerIndex
+                )}. ${answer.text}</span><br>`;
+            }
+        });
+
+        cell2.innerHTML = answerOptionsHTML;
+        cell3.innerHTML = ` <button id="editQuestionBtn" class="btn btn-primary" onclick="editQuestion(this)">Chỉnh sửa</button> <button class="btn btn-danger" onclick="deleteQuestion(this)">Xóa</button>`;
+    });
+}
