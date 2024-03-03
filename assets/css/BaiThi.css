@@ -53,10 +53,10 @@ h2 {
   width: 50%;
   background: #fff;
   padding: 1rem 100px 1rem 6rem;
-  border-radius: 5px;
+  border-radius: 8px;
   margin-bottom: 20px;
   margin-left: 350px;
-  border:3px solid #aaa;
+  border:2px solid #aaa;
   label {
     display: block;
     position: relative;
@@ -90,7 +90,7 @@ h2 {
     &:checked {
       ~ .radio {
         background-color: #0ac07d;
-        transition: background .3s;
+        transition:  .4s;
         &::after {
           opacity: 1;
         }
@@ -139,4 +139,13 @@ h2 {
     font-size: 1em;
     font-weight: bold;
   }
+}
+
+#nopbai{
+  border: none;
+  background-color: rgb(255, 56, 56);
+  color: white
+}
+#nopbai:hover{
+  opacity: 0.6;
 }

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Login</title>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <link
+            href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./assets/css/adminSignin.css" />
+    </head>
+
+    <body>
+        <main>
+        	<section class="signIn_Up">
+        		<div class="container" id="container">
+		            <div class="form-container sign-in-container">
+		                <form>
+		                    <figure>
+		                        <img
+		                            src="./assets/img/PTIT.png"
+		                            alt="PTIT"
+		                            class="logo"
+		                        />
+		                    </figure>
+		                    <h1>ADMIN</h1>
+		                    <input
+		                        name="email"
+		                        class="truongnhap"
+		                        type="text"
+		                        id="email"
+		                        placeholder="Gmail của bạn"
+		                    />
+		                    <div class="loi" id="loi_email"></div>
+		                    <input
+		                        name="password"
+		                        type="password"
+		                        id="matkhau"
+		                        class="password"
+		                        placeholder="Mật khẩu"
+		                    />
+		                    <div class="loi" id="loi_mat_khau"></div>
+							<div id="checkbox">
+								<label  for="login__checkbox">Nhớ mật khẩu</label>
+								<input type="checkbox" value="1" name="remember" id="login__checkbox">				
+							</div>						
+		                    <div class="truongnhap button">
+		                        <button type="button"  id="submit" onclick="xacnhan(event)" >
+		                            <span>Đăng Nhập</span>
+		                        </button>
+		                    </div>
+	
+		                </form>
+		            </div>
+		        </div>
+				<figure>
+					<img src="./assets/img/bc-1.png" alt="" class="background-right">
+				</figure>
+				<figure>
+					<img src="./assets/img/bc-3.png" alt="" class="background-left_1">
+				</figure>
+        	</section>
+        </main>
+    </body>
+	<script src="./js/adminSignin.js" type="text/javascript"></script>
+</html>

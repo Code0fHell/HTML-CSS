@@ -1,0 +1,62 @@
+#menu1 {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(132, 24, 24);
+  padding: 10px;
+}
+
+#menu1 img {
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+#menu1 a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: 1px;
+  border-radius: 5px;
+}
+
+table {
+  width: auto;
+  border-collapse: collapse;
+  border: 1px solid black;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+th {
+  background-color: #b8b7b7;
+}
+
+a {
+  text-decoration: none;
+  color: red
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.cangiua {
+  display: flex;
+  justify-content: center
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+  a{
+      text-decoration: none;
+  }
+}

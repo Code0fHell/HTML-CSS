@@ -52,9 +52,9 @@ function xacnhan(event) {
     giatrimatkhau.length < 8
   ) {
     return false;
-  } else {
-    return true;
   }
+  window.location.href = "TrangChinh.html"
+  return true;
 }
 
 function loi(id, message) {

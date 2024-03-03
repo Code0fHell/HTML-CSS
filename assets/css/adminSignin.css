@@ -85,7 +85,7 @@ input {
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
-    width:auto;
+    width: 100%;
 }
 
 .signIn_Up {
@@ -111,6 +111,8 @@ input {
 
 .container {
     background-color: #fff;
+    justify-content: center;
+    display: flex;
     border-radius: 10px;
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     position: relative;
@@ -129,7 +131,9 @@ input {
 
 .sign-in-container {
     left: 0;
-    width: 50%;
+    justify-content: center;
+    display: flex;
+    width: 100%;
     z-index: 2;
 }
 
@@ -282,6 +286,14 @@ footer a {
 /* Avatar */
 .avatar {
 }
-u{
-    color:#ff4b2b;
+#checkbox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    label{
+        font-size: 13px;
+    }
+    input{
+        width: 30px;
+    }
 }

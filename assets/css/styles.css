@@ -85,7 +85,7 @@ input {
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
-    width:auto;
+    width: 100%;
 }
 
 .signIn_Up {
@@ -281,7 +281,4 @@ footer a {
 
 /* Avatar */
 .avatar {
-}
-u{
-    color:#ff4b2b;
 }

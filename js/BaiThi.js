@@ -4,6 +4,7 @@ const questions = [
     option: "options1",
     question: "Hãy cho biết 1+1 bằng bao nhiêu",
     opt: ["2", "3", "4", "55"],
+    description:"123123123123",
     correct: "55",
     correct_id: "1"
   },
@@ -12,6 +13,7 @@ const questions = [
     question: "Hãy cho biết 1+1213123 bằng bao nhiêu",
     option: "options2",
     opt: ["2", "3", "4", "55"],
+    description:"123123123123",
     correct: "2",
     correct_id: "2"
   },
@@ -20,6 +22,7 @@ const questions = [
     option: "options3",
     question: "Hãy cho biết 1+1213123 bằng bao nhiêu",
     opt: ["2", "8", "4", "55"],
+    description:"123123123123",
     correct: "8",
     correct_id: "3"
   },
@@ -28,6 +31,7 @@ const questions = [
     option: "options4",
     question: "Hãy cho biết 1+132312 bằng bao nhiêu",
     opt: ["10", "3", "4", "55"],
+    description:"123123123123",
     correct: "10",
     correct_id: "4"
   },
@@ -36,18 +40,20 @@ const questions = [
     option: "options5",
     question: "Hãy cho biết 1+1123123 bằng bao nhiêu",
     opt: ["21", "3", "4", "55"],
+    description:"123123123123",
     correct: "21",
     correct_id: "5"
   },
 ]
 function showNotification(message) {
   alert(message);
+  window.location.href="Bailamchitiet.html"
 
 }
 const questionsContainer = document.getElementById("questions-container");
 console.log(questionsContainer)
 function submit() {
-  return `<button type="submit" name="submit" onClick="showNotification('Bạn đã nộp bài')">Nộp bài</button>`
+  return `<button type="submit" name="submit" id="nopbai"onClick="showNotification('Bạn đã nộp bài')">Nộp bài</button>`
 }
 function renderQuestions() {
 
@@ -100,9 +106,8 @@ setInterval(function() {
   document.getElementById("timer").innerHTML = formatTime(timeLeft);
   if (timeLeft < 0) {
     showNotification("Hết giờ!");
-    disableSubmitButton();
   }
-}, 1000);
+},1000);
 function formatTime(seconds) {
   var minutes = Math.floor(seconds / 60);
   var seconds = seconds % 60;

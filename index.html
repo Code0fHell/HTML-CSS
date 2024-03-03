@@ -11,6 +11,7 @@
             href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap"
             rel="stylesheet"
         />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
         <link rel="stylesheet" href="./CSS/style.css" />
     </head>
 
@@ -32,7 +33,7 @@
 		                        type="text"
 		                        class="truongnhap"
 		                        id="tendangky"
-		                        placeholder="Nhập tên đăng nhập"
+		                        placeholder="Nhập tên của bạn"
 		                    />
 		                    <div class="loi" id="loi_tendangky"></div>
 		                    <input
@@ -46,7 +47,7 @@
 		                        type="password"
 		                        id="matkhaudangkynhaplai"
 		                        class="truong nhap password"
-		                        placeholder="Xác nhận mật khẩu"
+		                        placeholder="Nhập lại mật khẩu"
 		                    />
 		                    <div class="loi" id="loi_mat_khaudangkynhaplai"></div>
 		
@@ -59,18 +60,18 @@
 		                <form >
 		                    <figure>
 		                        <img
-		                            src="./IMG/PTIT.png"
+		                            src="./assets/img/PTIT.png"
 		                            alt="PTIT"
 		                            class="logo"
 		                        />
 		                    </figure>
 		                    <h1>Đăng Nhập</h1>
 		                    <input
-		                        name="username"
+		                        name="email"
 		                        class="truongnhap"
 		                        type="text"
-		                        id="username"
-		                        placeholder="Gmail của bạn"
+		                        id="email"
+		                        placeholder="Email"
 		                    />
 		                    <div class="loi" id="loi_email"></div>
 		                    <input
@@ -81,45 +82,39 @@
 		                        placeholder="Mật khẩu"
 		                    />
 		                    <div class="loi" id="loi_mat_khau"></div>
-							<div>
-								<label  for="login__checkbox">Nhớ mật khẩu</label>
-								<input type="checkbox" value="1" name="remember" id="login__checkbox">				
-							</div>						
 		                    <div class="truongnhap button">
-		                        <button type="submit"  id="submit" onclick="xacnhan(event)" >
+		                        <button type="button"  id="submit" onclick="xacnhan(event)" >
 		                            <span>Đăng Nhập</span>
 		                        </button>
 		                    </div>
-							<a href="./Password.html"><u>Quên mật khẩu?</u></a>
 		                </form>
-		                
+		                <a href="#">Quên mặt khẩu?</a>
 		                <button>Đăng Ký</button>
 		            </div>
 		            <div class="overlay-container">
 		                <div class="overlay">
 		                    <div class="overlay-panel overlay-left">
-		                        <h1>Vui lòng điền đầy đủ thông tin</h1>
-								<p class="overlay__desc">Đăng nhập để tiếp tục công việc!</p>
+		                        <h1>Chào Mừng Trở Lại!</h1>
+								<p class="overlay__desc">Đăng nhập để tiếp tục luyện tập!</p>
 		                        <button class="ghost" id="signIn">Đăng Nhập</button>
 		                    </div>
 		                    <div class="overlay-panel overlay-right">
 								
 		                        <h1>Chào bạn!</h1>
-								<p class="overlay__desc">Hãy đăng nhập để tiến hành công việc!</p>
-								<p class="duoidong">Chưa có tài khoản? </p>
-								<button class="ghost" id="signUp">Đăng Ký ngay</button>
+								<p class="overlay__desc">Hãy đăng ký để có thể luyện tập!</p>
+		                        <button class="ghost" id="signUp">Đăng Ký</button>
 		                    </div>
 		                </div>
 		            </div>
 		        </div>
 				<figure>
-					<img src="./IMG/bc-1.png" alt="" class="background-right">
+					<img src="./assets/img/bc-1.png" alt="" class="background-right">
 				</figure>
 				<figure>
-					<img src="./IMG/bc-3.png" alt="" class="background-left_1">
+					<img src="./assets/img/bc-3.png" alt="" class="background-left_1">
 				</figure>
         	</section>
         </main>
-        <script src="./JS/signIn.js" type="text/javascript"></script>
+        <script src="./js/signIn.js" type="text/javascript"></script>
     </body>
 </html>

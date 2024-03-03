@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Dashboard - SB Admin</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+            rel="stylesheet"
+        />
+        <link href="./assets/css/admin.css" rel="stylesheet" />
+        <script
+            src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark ">
+            <!-- Navbar Brand-->
+            <a class="navbar-brand ps-3" href="./dashboard.html">
+                <img src="./assets/img/PTIT.png" alt="" class="logo">
+            </a>
+            <!-- Sidebar Toggle-->
+            <button
+                class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+                id="sidebarToggle"
+                href="#!"
+            >
+                <i class="fas fa-bars"></i>
+            </button>
+            <!-- Navbar Search-->
+            <form
+                class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"
+            >
+                <div class="input-group">
+                    <input
+                        class="form-control"
+                        type="text"
+                        placeholder="Search for..."
+                        aria-label="Search for..."
+                        aria-describedby="btnNavbarSearch"
+                    />
+                    <button
+                        class="btn btn-primary"
+                        id="btnNavbarSearch"
+                        type="button"
+                    >
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </form>
+            <!-- Navbar-->
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+                <li class="nav-item dropdown">
+                    <a
+                        class="nav-link dropdown-toggle"
+                        id="navbarDropdown"
+                        href="#"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                        ><i class="fas fa-user fa-fw"></i
+                    ></a>
+                    <ul
+                        class="dropdown-menu dropdown-menu-end"
+                        aria-labelledby="navbarDropdown"
+                    >
+                        <li class="dropdown-item">Admin</li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" href="adminSignin.html">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav
+                    class="sb-sidenav accordion sb-sidenav-dark"
+                    id="sidenavAccordion"
+                >
+                    <div class="sb-sidenav-menu">
+                        <div class="sb-sidenav-menu">
+                            <div class="nav">
+                                <div class="sb-sidenav-menu-heading">home</div>
+        
+                                <!-- chuyển trang theo yêu cầu -->
+                                <a class="nav-link" href="dashboard.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                    Admin Dashboard
+                                </a>
+                                <div class="sb-sidenav-menu-heading">Chức năng</div>
+                    
+                                <a class="nav-link" href="exam.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Kỳ thi
+                                </a>
+                                <a class="nav-link" href="trang_thong_ke.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Thống kê
+                                </a>
+        
+                                <!-- thông tin sinh viên -->
+                                <a class="nav-link" href="StudentInfo.html">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                                    Thông tin sinh viên
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Hiện đang đăng nhập:</div>
+                        Administrator
+                    </div>
+                </nav>
+            </div>
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 id="ec-exams-heading" class="mt-4">Tạo mới kỳ thi</h1>
+                        
+                        <!-- Form để nhập thông tin kỳ thi -->
+                        <form id="examForm">
+                            <div class="mb-3">
+                                <label for="examName" class="form-label">Tên kỳ thi:</label>
+                                <input type="text" class="form-control" id="examName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="examDescription" class="form-label">Mô tả:</label>
+                                <textarea class="form-control" id="examDescription" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="examType" class="form-label">Loại kỳ thi:</label>
+                                <select class="form-select" id="examType" required>
+                                    <option value="free" selected>Tự do</option>
+                                    <option value="specificTime">Thời gian cụ thể</option>
+                                </select>
+                            </div>
+                            <div id="specificTimeSettings" style="display: none;">
+                                <div class="mb-3">
+                                    <label for="examStartTime" class="form-label">Thời gian bắt đầu</label>
+                                    <input type="time" class="form-control" id="examStartTime">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="examEndTime" class="form-label">Thời gian kết thúc</label>
+                                    <input type="time" class="form-control" id="examEndTime">
+                                </div>
+                            </div>
+                            
+                            <!-- Các input và button để thêm, chỉnh sửa, xóa câu hỏi -->
+                            <div class="mb-3">
+                                <label for="question" class="form-label">Câu hỏi:</label>
+                                <input type="text" class="form-control" id="question" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="answerOptions" class="form-label">Câu trả lời:</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answerOptions" id="answerOptionA" value="A" required>
+                                    <label class="form-check-label" for="answerOptionA">
+                                        <input type="text" class="form-control answer-content" id="answerOptionAContent" placeholder="Lựa chọn A" required>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answerOptions" id="answerOptionB" value="B" required>
+                                    <label class="form-check-label" for="answerOptionB">
+                                        <input type="text" class="form-control answer-content" id="answerOptionBContent" placeholder="Lựa chọn B" required>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answerOptions" id="answerOptionC" value="C" required>
+                                    <label class="form-check-label" for="answerOptionC">
+                                        <input type="text" class="form-control answer-content" id="answerOptionCContent" placeholder="Lựa chọn C" required>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answerOptions" id="answerOptionD" value="D" required>
+                                    <label class="form-check-label" for="answerOptionD">
+                                        <input type="text" class="form-control answer-content" id="answerOptionDContent" placeholder="Lựa chọn D" required>
+                                    </label>
+                                </div>
+                            </div>
+                            <!-- Nút thêm câu hỏi -->
+                            <button id="addQuestionBtn" type="button" class="btn btn-primary" onclick="addQuestion()">Thêm Câu Hỏi</button>
+                            <!-- Nút cập nhật chỉnh sửa -->
+                            <button id="updateQuestionBtn" class="btn btn-success" style="display: none;" onclick="updateQuestion()">Cập nhật</button>
+                            <!-- Nút hủy chỉnh sửa -->
+                            <button id="cancelEditBtn" class="btn btn-secondary" style="display: none;" onclick="cancelEdit()">Hủy chỉnh sửa</button>
+                            <!-- Bảng hiển thị các câu hỏi đã thêm -->
+                            <table class="table mt-4" id="questionTable">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Câu Hỏi</th>
+                                        <th scope="col">Đáp án</th>
+                                        <th scope="col">Thao Tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Questions and answer options will be added dynamically here -->
+                                </tbody>
+                            </table>
+                            
+                            <!-- Input để nhập từ file Excel -->
+                            <div class="mb-3">
+                                <label for="excelFile" class="form-label">Nhập từ file Excel:</label>
+                                <input type="file" id="fileInput" onchange="handleFileImport(event)" />
+                            </div>
+                            
+                            <!-- Button để lưu thông tin kỳ thi -->
+                            <button type="button" class="btn btn-success mt-3" onclick="saveExam()">Lưu Kỳ Thi</button>
+                        </form>
+                    </div>
+                </main>
+                <!-- Footer -->
+                <footer class="py-4 bg-light mt-auto">
+                    <div class="container-fluid px-4">
+                        <div
+                            class="d-flex align-items-center justify-content-between small"
+                        >
+                            <div class="text-muted">
+                                Copyright &copy; Your Website 2023
+                            </div>
+                            <div>
+                                <a href="#">Privacy Policy</a>
+                                &middot;
+                                <a href="#">Terms &amp; Conditions</a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="./js/ec-exams.js"></script>
+        <script src="./js/general.js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="js/datatables-simple-demo.js"></script>
+    </body>
+</html>

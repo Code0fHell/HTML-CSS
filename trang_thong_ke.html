@@ -9,14 +9,16 @@
     <meta name="author" content="" />
     <title>Trang thống kê</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-    <link href="./assets/css/bootstap.css" rel="stylesheet" />
+    <link href="./assets/css/admin.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark ">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3" href="index.html">Trang chủ</a>
+        <a class="navbar-brand ps-3" href="./dashboard.html">
+            <img src="./assets/img/PTIT.png" alt="" class="logo">
+        </a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -36,11 +38,11 @@
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+        
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
+                    <li><a class="dropdown-item" href="adminSignin.html">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -53,32 +55,20 @@
                         <div class="sb-sidenav-menu-heading">home</div>
 
                         <!-- chuyển trang theo yêu cầu -->
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="dashboard.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                             Admin Dashboard
                         </a>
-                        <div class="sb-sidenav-menu-heading">heading 2</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            Trang Tạo/Chỉnh sửa Kỳ thi
-                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        <div class="sb-sidenav-menu-heading">Chức năng</div>
+            
+                        <a class="nav-link" href="exam.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Kỳ thi
                         </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <!-- gán link -->
-                                <a class="nav-link" href="layout-static.html">Tạo kỳ thi</a>
-                                <a class="nav-link" href="layout-sidenav-light.html">Chỉnh sửa kỳ thi</a>
-                            </nav>
-                        </div>
-
-                        <!-- trang thông kê -->
                         <a class="nav-link" href="trang_thong_ke.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                            Trang thống kê
+                            Thống kê
                         </a>
-
                         <!-- thông tin sinh viên -->
                         <a class="nav-link" href="StudentInfo.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
@@ -93,8 +83,8 @@
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Trang thống kê</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                        <li class="breadcrumb-item active"><a href="trang_thong_ke phu.html">Trang thống kê</a></li>
+                        <li class="breadcrumb-item"><a href="dasboard.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active"><a href="trang_thong_ke.html">Trang thống kê</a></li>
                     </ol>
                     <div class="card mb-4">
                         <div class="card-body">
@@ -268,10 +258,12 @@
                                         <td>7</td>
                                         <td>6-8</td>
                                     </tr>
-
+                                    
 
                                 </tbody>
                             </table>
+                            <button id="saveButton" type="button" class="btn btn-success mt-3"
+                            onclick="saveStudentInfo(this)">Tìm kiếm</button>
                         </div>
                     </div>
                     <button class="btn btn-primary" id="print-result" type="submit">Xuất báo cáo</button>

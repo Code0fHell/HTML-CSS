@@ -11,6 +11,9 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    a{
+        text-decoration: none;
+    }
 }
 
 /* Dropdown Content (Hidden by Default) */
