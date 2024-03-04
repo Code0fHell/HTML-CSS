@@ -142,10 +142,12 @@ h2 {
 }
 
 #nopbai{
-  border: none;
+  border: 1px solid rgb(255, 56, 56);
   background-color: rgb(255, 56, 56);
-  color: white
+  color: white;
 }
 #nopbai:hover{
-  opacity: 0.6;
+  color: rgb(255, 56, 56);
+  background-color: #fff;
+  transition: 0.3s;
 }

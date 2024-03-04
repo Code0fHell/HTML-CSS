@@ -11249,3 +11249,8 @@ body {
   height: 50px;
   object-fit: cover;
 }
+
+.input-group {
+  max-width: 300px;
+  padding: 0 16px 16px;
+}

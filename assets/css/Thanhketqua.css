@@ -1,27 +1,4 @@
-#menu1 {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: rgb(132, 24, 24);
-  padding: 10px;
-}
 
-#menu1 img {
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  object-fit: cover;
-  border-radius: 50%;
-}
-
-#menu1 a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  padding: 10px;
-  border: 1px;
-  border-radius: 5px;
-}
 
 table {
   width: auto;
@@ -49,14 +26,14 @@ a:hover {
   text-decoration: underline;
 }
 
-.cangiua {
+.container {
+  margin-top: 20px;
   display: flex;
-  justify-content: center
+  flex-direction: column;
+  justify-content: center;
 }
-.dropdown {
-  position: relative;
-  display: inline-block;
-  a{
-      text-decoration: none;
-  }
+
+.nav-bar {
+  display: flex;
+  align-items: center;
 }

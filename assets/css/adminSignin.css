@@ -38,9 +38,13 @@ span {
 
 a {
     color: #333;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
     margin: 15px 0;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 button {
@@ -286,14 +290,14 @@ footer a {
 /* Avatar */
 .avatar {
 }
-#checkbox{
+#checkbox {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    label{
-        font-size: 13px;
+    label {
+        font-size: 16px;
     }
-    input{
+    input {
         width: 30px;
     }
 }
