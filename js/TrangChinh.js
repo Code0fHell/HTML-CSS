@@ -3,53 +3,120 @@ const dethiContainer1 = document.getElementById("description");
 console.log(dethiContainer1);
 test_giuaky = [
     {
-        content: "Đề thi đội tuyển quốc gia Vật lý",
+        content: "Đề thi THPT QG môn Toán",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút+ Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
-        img: "./assets/img/physics.jpg",
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Toán sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Toán được sưu tập qua các năm với đầy đủ lời giải chi tiết",
+        img: "./assets/img/toan.png",
     },
     {
-        content: "Đề thi đội tuyển quốc gia Toán",
+        content: "Đề thi THPT QG môn Vật Lý",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút+ Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
-        img: "./assets/img/math.jpeg",
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Vật Lý sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Vật Lý được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/vatly.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Sinh Học",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/van.jpg",
     },
     {
         content: "Đề thi đội tuyển quốc gia Ngữ Văn",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút + Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
+        "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
         img: "./assets/img/van.jpg",
     },
     {
-        content: "Đề thi đội tuyển quốc gia Sinh Học",
+        content: "Đề thi THPT QG môn Toán",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút+ Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
-        img: "./assets/img/facebook.svg",
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Toán sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Toán được sưu tập qua các năm với đầy đủ lời giải chi tiết",
+        img: "./assets/img/toan.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Vật Lý",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Vật Lý sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Vật Lý được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/vatly.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Sinh Học",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/van.jpg",
+    },
+    {
+        content: "Đề thi đội tuyển quốc gia Ngữ Văn",
+        description:
+        "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/van.jpg",
+    },
+    {
+        content: "Đề thi THPT QG môn Toán",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Toán sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Toán được sưu tập qua các năm với đầy đủ lời giải chi tiết",
+        img: "./assets/img/toan.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Vật Lý",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Vật Lý sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Vật Lý được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/vatly.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Sinh Học",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/van.jpg",
+    },
+    {
+        content: "Đề thi đội tuyển quốc gia Ngữ Văn",
+        description:
+        "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/van.jpg",
     },
 ];
 test_luyentap = [
     {
-        content: "Đề thi đội tuyển quốc gia Vật lý",
+        content: "Đề thi THPT QG môn Toán",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút+ Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
-        img: "./assets/img/physics.jpg",
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Toán sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Toán được sưu tập qua các năm với đầy đủ lời giải chi tiết",
+        img: "./assets/img/math.jpeg",
     },
     {
-        content: "Đề thi đội tuyển quốc gia Toán",
-        description: "Thời gian thi 30 phút;",
+        content: "Đề thi THPT QG môn Vật Lý",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Vật Lý sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Vật Lý được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/dialy.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Sinh Học",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
         img: "./assets/img/math.jpeg",
     },
     {
         content: "Đề thi đội tuyển quốc gia Ngữ Văn",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút+ Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
+        "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
         img: "./assets/img/van.jpg",
     },
     {
-        content: "Đề thi đội tuyển quốc gia Sinh Học",
+        content: "Đề thi THPT QG môn Toán",
         description:
-            "+ Phần I: Kiến thức chung, 60 câu hỏi hiểu biết chung về hệ thống chính trị, tổ chức bộ máy của Đảng, Nhà nước, các tổ chức chính trị - xã hội; quản lý hành chính nhà nước; công chức, công vụ và các kiến thức khác để đánh giá năng lực. Thời gian thi 60 phút+ Phần II: Ngoại ngữ, 30 câu hỏi theo yêu cầu của vị trí việc làm về một trong năm thứ tiếng Anh, Nga, Pháp, Đức, Trung Quốc hoặc ngoại ngữ khác do người đứng đầu cơ quan có thẩm quyền tuyển dụng công chức quyết định. Thời gian thi 30 phút;",
-        img: "./assets/img/facebook.svg",
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Toán sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Toán được sưu tập qua các năm với đầy đủ lời giải chi tiết",
+        img: "./assets/img/toan.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Vật Lý",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Vật Lý sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Vật Lý được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/gdcd.png",
+    },
+    {
+        content: "Đề thi THPT QG môn Sinh Học",
+        description:
+            "Nhằm giúp các em chuẩn bị thật tốt cho kì thi THPT QG môn Sinh Học sắp đến. Xin gửi đến các em bộ đề thi trắc nghiệm THPT QG môn Sinh Học được sưu tập qua các năm với đầy đủ lời giải chi tiết.",
+        img: "./assets/img/gdcd.png",
     },
 ];
 
