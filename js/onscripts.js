@@ -14,13 +14,61 @@
 // function print_exam_name() {
 //     console.log(tenKyThi);
 // }
-
-const printButton = document.getElementById("print-result");
-
-printButton.addEventListener("click", function () {
-    alert("Sẵn sàng để in!");
-    window.print();
+document.getElementById("print-result").addEventListener("click", function () {
+    exportToCSV();
 });
+
+function exportToCSV() {
+    var table = document.getElementById("datatablesSimple");
+    var csvString = tableToCSV(table);
+
+    // Tạo liên kết tải về
+    var blob = new Blob([csvString], { type: "text/csv;charset=utf-8;" });
+    var link = document.createElement("a");
+
+    if (link.download !== undefined) {
+        var url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", "report.csv");
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
+
+function tableToCSV(table) {
+    var csvString = "\uFEFF"; // BOM (Byte Order Mark) để hỗ trợ định dạng UTF-8
+
+    var rows = table.querySelectorAll("tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        var cells = row.querySelectorAll("td, th");
+
+        for (var j = 0; j < cells.length; j++) {
+            var cell = cells[j].innerText.trim().replace(/"/g, '""'); // Loại bỏ khoảng trắng và xử lý dấu "
+
+            // Kiểm tra xem cell có định dạng phân phối điểm số không
+            var isDistribution = /^\d+\s?-\s?\d+$/.test(cell);
+
+            // Nếu là phân phối điểm số, thì thêm dấu cách trước và sau gạch ngang
+            if (isDistribution) {
+                cell = ' ' + cell + ' ';
+            }
+
+            // Đối với các giá trị khác, có thể thực hiện xử lý định dạng khác ở đây nếu cần
+            csvString += '"' + cell + '"';
+
+            if (j < cells.length - 1) {
+                csvString += ",";
+            }
+        }
+        csvString += "\n";
+    }
+
+    return csvString;
+}
 
 
 

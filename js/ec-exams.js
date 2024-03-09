@@ -445,10 +445,32 @@ function saveExam() {
 
     // Kiểm tra xem localStorage đã có dữ liệu kỳ thi chưa
     var examsList = JSON.parse(localStorage.getItem("exams")) || [];
+    var isEditing = sessionStorage.getItem("isEditing") === "true";
     // Gán id cho kỳ thi mới
-    examData.id = examsList.length + 1;
-    console.log(examData.id);
-    examsList.push(examData);
+    if (isEditing) {
+        // Lấy examID từ sessionStorage
+        var editExamID = sessionStorage.getItem("editExamID");
+
+        // Tìm kỳ thi cần chỉnh sửa trong danh sách
+        var editedExamIndex = examsList.findIndex(function (exam) {
+            return exam.id == editExamID;
+        });
+
+        // Nếu tìm thấy, cập nhật thông tin kỳ thi
+        if (editedExamIndex !== -1) {
+            examsList[editedExamIndex] = examData;
+        }
+
+        // Reset trạng thái chỉnh sửa
+        isEditing = false;
+    } else {
+        // Gán id cho kỳ thi mới
+        examData.id = examsList.length + 1;
+        console.log(examData.id);
+
+        // Thêm kỳ thi mới vào danh sách
+        examsList.push(examData);
+    }
 
     // Lưu lại danh sách kỳ thi vào localStorage
     localStorage.setItem("exams", JSON.stringify(examsList));
@@ -467,19 +489,23 @@ function loadEditExamInfo() {
     var examsList = JSON.parse(localStorage.getItem("exams")) || [];
     console.log(examsList);
     var check = false;
-    if(editExamId) {
-        document.getElementById("ec-exams-heading").innerHTML = "Chỉnh sửa kỳ thi";
+    if (editExamId) {
+        document.getElementById("ec-exams-heading").innerHTML =
+            "Chỉnh sửa kỳ thi";
         // Tìm kỳ thi có id tương ứng
         examsList.forEach(function (item) {
             if (item.id == editExamId) {
                 console.log(item.name);
                 // Hiển thị thông tin kỳ thi để chỉnh sửa
                 document.getElementById("examName").value = item.name;
-                document.getElementById("examDescription").value = item.description;
+                document.getElementById("examDescription").value =
+                    item.description;
                 if (item.type === "Thời gian cụ thể") {
-                    document.getElementById("specificTimeSettings").style.display =
-                        "block";
-                    document.getElementById("examStartTime").value = item.startTime;
+                    document.getElementById(
+                        "specificTimeSettings"
+                    ).style.display = "block";
+                    document.getElementById("examStartTime").value =
+                        item.startTime;
                     document.getElementById("examEndTime").value = item.endTime;
                 }
                 // Hiển thị loại kỳ thi

@@ -1,3 +1,5 @@
+var isEditing = false;
+
 // Hàm chuyển hướng sang trang thêm mới kỳ thi
 function addExam() {
     sessionStorage.clear();
@@ -27,6 +29,7 @@ function calculateTimeDifference(startTime, endTime) {
 // Lưu examID vào sessionStorage khi bấm vào nút chỉnh sửa
 function editExam(examID) {
     sessionStorage.setItem("editExamID", examID);
+    sessionStorage.setItem("isEditing", true);
     window.location.href = "ec-exams.html";
 }
 
@@ -44,42 +47,54 @@ function displayExamList() {
     console.log(editExamID);
     // Hiển thị từng kỳ thi trong danh sách
     examsList.forEach(function (exam) {
-        // Kiểm tra xem kỳ thi có tồn tại trong danh sách không
-        var existingListItem = examListElement.querySelector(`[exam-item-id="${editExamID}"]`);
-        console.log(existingListItem);
-        // Nếu tồn tại, thay thế nội dung của phần tử
-        if (existingListItem) {
-            existingListItem.innerHTML = `
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">${exam.name}</h5>
-                        <p class="card-text">${exam.description}</p>
-                        <p class="card-text">Loại: ${exam.type}</p>
-                        <p class="card-text">Số câu hỏi: ${exam.numQuestions}</p>
-                        ${
-                            exam.type === "Thời gian cụ thể"
-                                ? `<p class="card-text">Thời gian: ${calculateTimeDifference(
-                                      exam.startTime,
-                                      exam.endTime
-                                  )}</p>`
-                                : ""
-                        }
-                        <button class="btn btn-primary edit-exam-btn" data-exam-id="${exam.id}">Chỉnh sửa</button>
-                        <button class="btn btn-danger delete-exam-btn" data-exam-id="${exam.id}">Xóa</button>
+        if (editExamID == exam.id) {
+            // Kiểm tra xem kỳ thi có tồn tại trong danh sách không
+            var existingListItem = examListElement.querySelector(
+                `[exam-item-id="${exam.id}"]`
+            );
+            console.log(existingListItem);
+            // Nếu tồn tại, thay thế nội dung của phần tử
+            if (existingListItem) {
+                existingListItem.innerHTML = `
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${exam.name}</h5>
+                            <p class="card-text">${exam.description}</p>
+                            <p class="card-text">Loại: ${exam.type}</p>
+                            <p class="card-text">Số câu hỏi: ${
+                                exam.numQuestions
+                            }</p>
+                            ${
+                                exam.type === "Thời gian cụ thể"
+                                    ? `<p class="card-text">Thời gian: ${calculateTimeDifference(
+                                          exam.startTime,
+                                          exam.endTime
+                                      )}</p>`
+                                    : ""
+                            }
+                            <button class="btn btn-primary edit-exam-btn" data-exam-id="${
+                                exam.id
+                            }">Chỉnh sửa</button>
+                            <button class="btn btn-danger delete-exam-btn" data-exam-id="${
+                                exam.id
+                            }">Xóa</button>
+                        </div>
                     </div>
-                </div>
-            `;
-            // Thêm event listener cho nút Chỉnh sửa
-            var editButton = existingListItem.querySelector(".edit-exam-btn");
-            editButton.addEventListener("click", function () {
-                editExam(exam.id);
-            });
-    
-            // Thêm event listener cho nút Xóa
-            var deleteButton = existingListItem.querySelector(".delete-exam-btn");
-            deleteButton.addEventListener("click", function () {
-                deleteExam(exam.id);
-            });
+                `;
+                // Thêm event listener cho nút Chỉnh sửa
+                var editButton =
+                    existingListItem.querySelector(".edit-exam-btn");
+                editButton.addEventListener("click", function () {
+                    editExam(exam.id);
+                });
+
+                // Thêm event listener cho nút Xóa
+                var deleteButton =
+                    existingListItem.querySelector(".delete-exam-btn");
+                deleteButton.addEventListener("click", function () {
+                    deleteExam(exam.id);
+                });
+            }
         } else {
             // Nếu không tồn tại, tạo phần tử mới
             var listItem = document.createElement("div");
@@ -91,7 +106,9 @@ function displayExamList() {
                         <h5 class="card-title">${exam.name}</h5>
                         <p class="card-text">${exam.description}</p>
                         <p class="card-text">Loại: ${exam.type}</p>
-                        <p class="card-text">Số câu hỏi: ${exam.numQuestions}</p>
+                        <p class="card-text">Số câu hỏi: ${
+                            exam.numQuestions
+                        }</p>
                         ${
                             exam.type === "Thời gian cụ thể"
                                 ? `<p class="card-text">Thời gian: ${calculateTimeDifference(
@@ -100,8 +117,12 @@ function displayExamList() {
                                   )}</p>`
                                 : ""
                         }
-                        <button class="btn btn-primary edit-exam-btn" data-exam-id="${exam.id}">Chỉnh sửa</button>
-                        <button class="btn btn-danger delete-exam-btn" data-exam-id="${exam.id}">Xóa</button>
+                        <button class="btn btn-primary edit-exam-btn" data-exam-id="${
+                            exam.id
+                        }">Chỉnh sửa</button>
+                        <button class="btn btn-danger delete-exam-btn" data-exam-id="${
+                            exam.id
+                        }">Xóa</button>
                     </div>
                 </div>
             `;
@@ -110,7 +131,7 @@ function displayExamList() {
             editButton.addEventListener("click", function () {
                 editExam(exam.id);
             });
-    
+
             // Thêm event listener cho nút Xóa
             var deleteButton = listItem.querySelector(".delete-exam-btn");
             deleteButton.addEventListener("click", function () {

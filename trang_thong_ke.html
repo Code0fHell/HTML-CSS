@@ -34,17 +34,22 @@
         /* Kiểu và kích thước cho bảng và biểu đồ */
         .charts-container {
             display: flex;
+            flex-wrap: wrap; /* Cho phép xuống dòng nếu không đủ không gian */
             gap: 20px;
             justify-content: space-around;
+            overflow-x: auto; /* Thêm thanh cuộn ngang nếu chiều rộng vượt quá */
+            margin-bottom: 20px; /* Khoảng cách giữa bảng và biểu đồ */
         }
 
-        #datatablesSimple {
-            width: 100%;
+        .chart-container {
+            max-width: 100%; /* Đặt chiều rộng tối đa cho khối biểu đồ */
+            width: 100%; /* Chiếm đầy đủ chiều rộng khi không vượt quá */
+            margin: 0 auto; /* Canh giữa khối biểu đồ trong bảng */
         }
 
-        canvas {
-            width: 50% !important;
-            height: 500px !important;
+        canvas.chart-canvas {
+            max-width: 100%; /* Đặt chiều rộng tối đa là 100% */
+            height: auto; /* Tự động điều chỉnh chiều cao */
         }
     </style>
 </head>
@@ -314,60 +319,63 @@
                         </div>
                     </div>
                     <div class="charts-container">
-                        <!-- Mã JavaScript để tạo biểu đồ -->
-                        <script>
-                            document.addEventListener("DOMContentLoaded", function() {
-                                // Lấy dữ liệu từ bảng HTML
-                                var data = {
-                                    labels: ["8-9", "7-9", "8.5", "9", "10", "6-8"],
-                                    datasets: [{
-                                        label: 'Phân phối điểm số',
-                                        data: [2, 4, 2, 6, 4, 1],
-                                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                                        borderColor: 'rgba(75, 192, 192, 1)',
-                                        borderWidth: 1
-                                    }]
-                                };
-            
-                                // Tạo biểu đồ cột
-                                var ctxColumn = document.createElement('canvas').getContext('2d');
-                                var columnChart = new Chart(ctxColumn, {
-                                    type: 'bar',
-                                    data: data,
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
+                        <div class="chart-container" style="max-width: 500px;"> <!-- Đặt chiều rộng tối đa cho biểu đồ cột -->
+                            <canvas class="chart-canvas" id="columnChart"></canvas>
+                        </div>
+                    
+                        <!-- Biểu đồ tròn -->
+                        <div class="chart-container" style="max-width: 500px;"> <!-- Đặt chiều rộng tối đa cho biểu đồ tròn -->
+                            <canvas class="chart-canvas" id="doughnutChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            // Lấy dữ liệu từ bảng HTML
+                            var data = {
+                                labels: ["8-9", "7-9", "8.5", "9", "10", "6-8"],
+                                datasets: [{
+                                    label: 'Phân phối điểm số',
+                                    data: [2, 4, 2, 6, 4, 1],
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    borderWidth: 1
+                                }]
+                            };
+                    
+                            // Tạo biểu đồ cột
+                            var ctxColumn = document.getElementById('columnChart').getContext('2d');
+                            var columnChart = new Chart(ctxColumn, {
+                                type: 'bar',
+                                data: data,
+                                options: {
+                                    scales: {
+                                        y: {
+                                            beginAtZero: true
                                         }
                                     }
-                                });
-            
-                                // Lấy tỷ lệ hoàn thành từ bảng HTML
-                                var completionData = [100, 85, 100, 100, 100, 70, 100, 100, 100, 100, 100, 100, 100, 100];
-            
-                                // Tạo biểu đồ tròn
-                                var ctxDoughnut = document.createElement('canvas').getContext('2d');
-                                var doughnutChart = new Chart(ctxDoughnut, {
-                                    type: 'doughnut',
-                                    data: {
-                                        labels: ['Hoàn thành', 'Chưa hoàn thành'],
-                                        datasets: [{
-                                            data: [completionData.filter(x => x === 100).length, completionData.filter(x => x < 100).length],
-                                            backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
-                                            borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
-                                            borderWidth: 1
-                                        }]
-                                    }
-                                });
-            
-                                // Thêm canvas của biểu đồ cột và biểu đồ tròn vào DOM
-                                var chartsContainer = document.querySelector('.charts-container');
-                                chartsContainer.appendChild(ctxColumn.canvas);
-                                chartsContainer.appendChild(ctxDoughnut.canvas);
+                                }
                             });
-                        </script>
-                    </div>
+                    
+                            // Lấy tỷ lệ hoàn thành từ bảng HTML
+                            var completionData = [100, 85, 100, 100, 100, 70, 100, 100, 100, 100, 100, 100, 100, 100];
+                    
+                            // Tạo biểu đồ tròn
+                            var ctxDoughnut = document.getElementById('doughnutChart').getContext('2d');
+                            var doughnutChart = new Chart(ctxDoughnut, {
+                                type: 'doughnut',
+                                data: {
+                                    labels: ['Hoàn thành', 'Chưa hoàn thành'],
+                                    datasets: [{
+                                        data: [completionData.filter(x => x === 100).length, completionData.filter(x => x < 100).length],
+                                        backgroundColor: ['rgba(75, 192, 192, 0.2)', 'rgba(255, 99, 132, 0.2)'],
+                                        borderColor: ['rgba(75, 192, 192, 1)', 'rgba(255, 99, 132, 1)'],
+                                        borderWidth: 1
+                                    }]
+                                }
+                            });
+                        });
+                    </script>
                     <button class="btn btn-primary" id="print-result" type="submit">Xuất báo cáo</button>
                 </div>
             </main>
