@@ -95,7 +95,7 @@ const students = [
 
 function saveStudentInfo(link) {
     // Lấy tất cả các hàng từ bảng
-    var tableRows = document.querySelectorAll('#datatablesSimple tbody tr');
+    var tableRows = document.querySelectorAll('.table tbody tr');
 
     // Mảng để lưu trữ thông tin sinh viên
     var studentsData = [];
