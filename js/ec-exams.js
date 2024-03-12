@@ -360,7 +360,7 @@ function addDataToTable(dataArray) {
                 }
             });
             cell2.innerHTML = answerContentHTML;
-            cell3.innerHTML = `<button class="btn btn-danger" onclick="deleteQuestion(this)">Xóa</button> <button id="editQuestionBtn" class="btn btn-primary" onclick="editQuestion(this)">Chỉnh sửa</button>`;
+            cell3.innerHTML = `<button id="editQuestionBtn" class="btn btn-primary" onclick="editQuestion(this)">Chỉnh sửa</button> <button class="btn btn-danger" onclick="deleteQuestion(this)">Xóa</button>`;
         }
     });
 }
